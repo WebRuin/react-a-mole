@@ -7,16 +7,16 @@
 // import TestUtils from 'react-addons-test-utils';
 import createComponent from 'helpers/shallowRenderHelper';
 
-import MoleComponent from 'components//MoleComponent.js';
+import MolesComponent from 'components//MolesComponent.js';
 
-describe('MoleComponent', () => {
+describe('MolesComponent', () => {
   let component;
 
   beforeEach(() => {
-    component = createComponent(MoleComponent);
+    component = createComponent(MolesComponent);
   });
 
   it('should have its component name as default className', () => {
-    expect(component.props.className).to.equal('mole-component');
+    expect(component.props.className).to.equal('moles-component');
   });
 });

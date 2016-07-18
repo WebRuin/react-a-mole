@@ -18,6 +18,11 @@ class MoleStore extends EventEmitter {
     this.state.numberOfMoles = newMoleCount;
   }
 
+  getNumberOfMoles() {
+    const numberOfMoles = this.state.numberOfMoles;
+    return numberOfMoles;
+  }
+
   getScore() {
     const score = this.state.score;
     return score;
