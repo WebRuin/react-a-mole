@@ -25,3 +25,9 @@ export function startClock() {
     type: 'START_CLOCK'
   });
 }
+
+export function setMoleClickCount() {
+  dispatcher.dispatch({
+    type: 'INCREASE-MOLE-CLICK-COUNT'
+  });
+}
