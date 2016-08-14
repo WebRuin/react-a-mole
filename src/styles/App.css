@@ -1,7 +1,13 @@
 /* Base Application Styles */
 body {
-  color: #fff;
-  background: #222;
+  background: #233648;
+}
+
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
 }
 
 .index img {

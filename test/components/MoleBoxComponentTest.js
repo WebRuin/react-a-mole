@@ -7,13 +7,13 @@
 // import TestUtils from 'react-addons-test-utils';
 import createComponent from 'helpers/shallowRenderHelper';
 
-import MoleBoxComponent from 'components//MoleBoxComponent.js';
+import MoleBox from 'components//MoleBox.js';
 
-describe('MoleBoxComponent', () => {
+describe('MoleBox', () => {
   let component;
 
   beforeEach(() => {
-    component = createComponent(MoleBoxComponent);
+    component = createComponent(MoleBox);
   });
 
   it('should have its component name as default className', () => {

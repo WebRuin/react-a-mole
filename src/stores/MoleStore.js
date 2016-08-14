@@ -7,15 +7,31 @@ class MoleStore extends EventEmitter {
   constructor() {
     super()
     this.state = {
+      difficultyFactor: .25, // score to decriment per ms
+      loopSpeed: 200,
+      gameTime: 60000,
+      moleClickCount: 0,
       numberOfMoles: 9,
       score: 0,
-      gameTime: 60000
-    }
+      successfulHits: 0
+    };
+    this.addMoles = this.addMoles.bind(this);
+    this.startClock = this.startClock.bind(this);
+    this.increaseMoleClickCount = this.increaseMoleClickCount.bind(this);
   }
 
   addMoles(moles){
-    const newMoleCount = this.state.numberOfMoles + moles;
-    this.state.numberOfMoles = newMoleCount;
+    this.setState({ numberOfMoles: this.state.numberOfMoles + moles});
+  }
+
+  getGameTime() {
+    const gameTime = this.state.gameTime;
+    return gameTime;
+  }
+
+  getMoleClickCount() {
+    const moleClicks = this.state.moleClickCount;
+    return moleClicks;
   }
 
   getNumberOfMoles() {
@@ -23,41 +39,27 @@ class MoleStore extends EventEmitter {
     return numberOfMoles;
   }
 
+
+  getMoleClickCount() {
+    const moleClicks = this.state.moleClickCount;
+    return moleClicks;
+  }
+
   getScore() {
     const score = this.state.score;
     return score;
   }
 
-  getTimer() {
-    const score = this.state.gameTime;
-    const minutes = score / 1000 / 60 << 0;
-    const seconds = (score / 1000) % 60;
-    const timeLeft = {
-      mins: minutes,
-      secs: seconds
-    }
-
-    return timeLeft;
+  increaseMoleClickCount() {
+    this.setState({ moleClickCount: this.state.moleClickCount + 1});
+    this.emit('change');
   }
 
   startClock() {
-    console.log('Clicked!');
-    let newGameTime
     while ( this.state.gameTime > 0 ) {
-      newGameTime = this.state.gameTime - 100;
-      this.state.gameTime = 10;
-      console.log(newGameTime);
+      this.state.gameTime = this.state.gameTime - 50;
       this.emit('change');
     }
-    console.log(newGameTime);
-  }
-
-  resetTime() {
-
-  }
-
-  setLocation() {
-
   }
 
   handleActions(action) {
@@ -77,6 +79,9 @@ class MoleStore extends EventEmitter {
       case 'START_CLOCK': {
         this.startClock();
         break;
+      }
+      case 'INCREASE-MOLE-CLICK-COUNT': {
+        this.increaseMoleClickCount();
       }
     }
   }
