@@ -5,11 +5,13 @@ import MoleStore from 'stores//MoleStore';
 
 require('styles//Moles.scss');
 
-
 class Mole extends React.Component {
   render () {
+    let moleStatus = <img src='../images/moleUp.svg' className='moleUp' alt='mole up'/>
     return (
-      <button className={'moles mole-' + this.props.number} onClick={MoleStore.increaseMoleClickCount.bind(this)}>{this.props.number}</button>
+      <button className={'moles mole-' + this.props.umber} onClick={MoleStore.increaseMoleClickCount.bind(this)}>
+        { moleStatus }
+      </button>
     )
   }
 }
